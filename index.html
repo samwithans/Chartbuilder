@@ -1,205 +1,71 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-    <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Chartbuilder</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Chartbuilder by samwithans</title>
 
-		<!-- favicon updates through js -->
-		<link id="favicon" rel="shortcut icon" type="image/png" href="" />
-		
-		<!-- Libraries CSS -->
-		<link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="bower_components/really-simple-color-picker/colorPicker.css" type="text/css" media="screen" charset="utf-8">
-		
-		<!-- Chartbuilder CSS -->
-		<link rel="stylesheet" href="css/chartbuilder.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/gneisschart.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/colorPicker.css" type="text/css" media="screen" charset="utf-8">
-	</head>
-	<body>
-		<!-- Add your site or application content here -->
-		<div id="interactiveContent">
-			<div id="leftColumn" class="column">
-			  <div class="cbInner">
-  				<div id="staticContainer">
-  					<div id="chartContainer"></div>
-  
-  					<canvas id="canvas" width="1200px" height="676px"></canvas> 
-  					<canvas id="favicanvas" width="16px" height="16px"></canvas> 
-  				</div>
-			  </div>
-      </div>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Chartbuilder</h1>
+        <p></p>
 
-			<div id="rightColumn" class="column">
-			  <div class="cbInner">
-			    <h1>ChartBuilder</h1>
-			  
-  				<div id="chartOptions" class="interfaceCol">
-             <div id="datainput">
-             	<div class="inputGroup">
-                <h2>1. Input your data</h2>
-                <span id="invalidDataSpan" class="hide">Warning: Data is Invalid</span>
-                <textarea id="csvInput" class="input-box" name="csvInput" rows="8"></textarea>
-             	</div>
-             	<div class="inputGroup">
-             		<h4>Check the format of your data</h4>
-                <div id="dataTable" class="input-box">
-                  <table border=0>
-                    <tr><th>Header</th></tr>
-                    <tr><td>Data</td></tr>
-                  </table>
-              	</div>
-             	</div>
-             	<div class="clearfix"></div>
-            </div>
+        <p class="view"><a href="https://github.com/samwithans/Chartbuilder">View the Project on GitHub <small>samwithans/Chartbuilder</small></a></p>
 
-            <div class="optionBlock topOptionBlock">
-              <h2>2. Series Options</h2>
-              <div id="seriesItems"></div>
-            </div>
-  					
-  					<div class="optionBlock">
-    					<h2>3. Chart Options</h2>
-    						<div class="optionGroup"><label for="chart_title">Title</label><input type="text" name="chart_title" value="" id="chart_title"></div>
-    						<div class="optionGroup"><label for="credit">Credit</label><input id="creditLine" type="text" name="credit" value="Made with Chartbuilder"></div>
-    						<div class="optionGroup"><label for="source">Source</label><input id="sourceLine" type="text" name="source" value="Data: ">
-    						<cite>Something like "Data: Bureau of Labor Statistics" or "Data compiled by Factset"</cite></div>
-    				</div>
-    				<div class="optionBlock">
-   							<h2>4. Right Axis Options</h2>
-    						<div id="rightAxisControls">
-    							<div class="optionGroup"><label for="right_axis_prefix">Right Axis Prefix</label><input type="text" name="right_axis_prefix" value="" id="right_axis_prefix"></div>
-	    						<div class="optionGroup"><label for="right_axis_suffix">Right Axis Suffix</label><input type="text" name="right_axis_suffix" value="" id="right_axis_suffix"></div>
-	    						<div class="optionGroup"><label for="right_axis_tick_num">Number of Y Axis Ticks</label><select name="right_axis_tick_num" id="right_axis_tick_num" size="1">
-	    							<option>3</option>
-	    							<option selected >4</option>
-	    							<option>5</option>
-	    							<option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-	    						</select></div>
-    							<div class="optionGroup"><label for="right_axis_max">Right Axis Max</label><input type="text" name="right_axis_max" value="" id="right_axis_max"></div>
-    							<div class="optionGroup"><label for="right_axis_min">Right Axis Min</label><input type="text" name="right_axis_min" value="" id="right_axis_min"></div>
-    							<div class="optionGroup advanced"><label for="right_axis_tick_override">Right Axis Tick Override</label><input type="text" name="right_axis_tick_override" value="" id="right_axis_tick_override"></div>
-    						</div>
-    					</div>
-    					<div id="leftAxisControls" class="optionBlock hide">
-  							<h2>4+ Left Axis Options</h2>
-  							<div class="optionGroup"><label for="left_axis_prefix">Left Axis Prefix</label><input type="text" name="left_axis_prefix" value="" id="left_axis_prefix"></div>
-  							<div class="optionGroup"><label for="left_axis_suffix">Left Axis Suffix</label><input type="text" name="left_axis_suffix" value="" id="left_axis_suffix"></div>
-  							<div class="optionGroup"><label for="left_axis_max">Left Axis Max</label><input type="text" name="left_axis_max" value="" id="left_axis_max"></div>
-  							<div class="optionGroup"><label for="left_axis_min">Left Axis Min</label><input type="text" name="left_axis_min" value="" id="left_axis_min"></div>
-  							<div class="optionGroup"><label for="left_axis_tick_override">Left Axis Tick Override</label><input type="text" name="left_axis_tick_override" value="" id="left_axis_tick_override" ></div>
-    					</div>
-    					<div class="optionBlock">
-    					<h2>5. Bottom Axis Options</h2>
-						<div class="optionGroup showonlywith-date">
-							<label for="x_axis_tick_date_frequency">Tick date frequency</label><select name="x_axis_tick_date_frequency" id="x_axis_tick_date_frequency" size="1">
-								<option selected>auto</option>
-								<option>1 hour</option>
-                <option>2 hours</option>
-                <option>3 hours</option>
-                <option>4 hours</option>
-                <option>6 hours</option>
-								<option>1 day</option>
-								<option>1 week</option>
-								<option>1 month</option>
-								<option>3 months</option>
-								<option>6 months</option>
-								<option>1 year</option>
-								<option>5 years</option>
-								<option>10 years</option>
-								<option>20 years</option>
-								<option>50 years</option>
-								<option>100 years</option>
-							   </select>
-						</div>
-    						<div class="optionGroup showonlywith-date"><label for="x_axis_date_format">X Axis Date Format</label><select name="x_axis_date_format" id="x_axis_date_format">
-    							<option value="mmddyyyy">2/25/2012</option>
-    							<option value="ddmmyyyy">25/2/2012</option>
-    							<option value="mmdd">2/25</option>
-    							<option value="Mdd">Feb. 25</option>
-                  <option value="ddM">25 Feb.</option>
-    							<option value="mmyy">2/13</option>
-    							<option value="yy">'13</option>
-    							<option value="yyyy">2013</option>
-                  <option value="QJan">Q2 (Jan. FY)</option>
-                  <option value="QJul">Q2 (July FY)</option>
-    							<option value="MM">February</option>
-    							<option selected value="M">Feb.</option>
-    							<option value="hmm">3:27</option>
-    						</select>
-							</div>
-              <div class="optionGroup showonlywith-ordinal">No options available</div>
-            </div>
-            <div class="optionBlock full">
-              <h2>4. Export</h2>
-              <div class="updateButton" id="createImageButton">
-                <p>Create Image of Chart</p>
-              </div>
-              <div id="downloadLinksDiv" class="downloadLinks hide">
-                <a download="new_chart.png" id="downloadImageLink" class="downloadLink" href="#" target="_blank">Download&nbsp;Image&nbsp;of&nbsp;Chart</a> or 
-                <a download="new_chart.svg" id="downloadSVGLink" class="downloadLink" href="#" target="_blank">Download&nbsp;SVG&nbsp;of&nbsp;Chart</a>
-              </div>
-            </div>
-            <div class="optionBlock full">
-              <h4>5. Copy the HTML table of your data (if you want)</h4>
-              <textarea  class="input-box"  id="table-html" type="text" rows="10"></textarea>
-              
-              <div class="previousCharts hide">
-                <div class="optionGroup"><label for="previous_charts">Previously Created Charts</label>
-                  <select name="previous_charts" id="previous_charts"></select>
-                </div>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-  				</div>
-  				
-          <div id="currentSeries" class="interfaceCol"></div>
-  			</div>			
-			</div>
-      <div id="blankColumn" class="column"></div>
-      <div class="clearfix"></div>
-		</div>
 
-    <!-- Libraries JS -->
-		<script src="bower_components/modernizr/modernizr.js" charset="utf-8"></script>
-		<script src="bower_components/jquery/jquery.min.js" charset="utf-8"></script>
-		<script src="bower_components/d3/d3.v2.min.js" charset="utf-8"></script>
-		<script src="bower_components/canvg/canvg.js" charset="utf-8"></script>
-		<script src="bower_components/rgbcolor/index.js" charset="utf-8"></script>
-		<script src="bower_components/jquery-csv/index.js" charset="utf-8"></script>
-		<script src="bower_components/really-simple-color-picker/jquery.colorPicker.min.js" charset="utf-8"></script>
-		<script src="bower_components/webfontloader/target/webfont.js" type="text/javascript" charset="utf-8"></script>
-		<script src="bower_components/sugar/release/sugar.min.js" charset="utf-8"></script>
-		
-		<!-- Chartbuilder JS -->
-		<script src="js/gneisschart.js" charset="utf-8"></script>
-		<script src="js/chartbuilder.js"></script>
-		
-		<script type="text/javascript">
+        <ul>
+          <li><a href="https://github.com/samwithans/Chartbuilder/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/samwithans/Chartbuilder/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/samwithans/Chartbuilder">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
-		//This loads the webfonts and starts Chartbuilder once they're present
-		WebFont.load({
-			custom: {
-				families: ["Cutive"]
-			},
-		    active: function(name) {
-		        $(document).ready(function() {
-		            ChartBuilder.start();
-		        });
-		    }
-		});
+<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-		</script>
-	</body>
+<pre><code>$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+</code></pre>
+
+<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+
+<h3>
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+
+<h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/samwithans">samwithans</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
 </html>
